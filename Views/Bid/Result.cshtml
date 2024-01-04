@@ -1,0 +1,21 @@
+﻿@model VehicleViewModel
+
+<h2>Calculation Result</h2>
+<br />
+<h4>Details of the Vehicle:</h4>
+
+<ul>
+<li>Base Price: @ViewBag.Vehicle.BasePrice.ToString("C")</li>
+<li>Vehicle Type: @ViewBag.Vehicle.VehicleType</li>
+</ul>
+
+<h4>Fees Summary:</h4>
+<ul>
+    @foreach (var fee in ViewBag.Fees)
+    {
+        <li>@fee</li>
+    }
+</ul>
+<p class="bold-text">Total Cost: @ViewBag.TotalCost.ToString("C")</p>
+
+<a asp-controller="Bid" asp-action="Index" class="btn btn-primary">Make Another Bid</a>

@@ -1,0 +1,23 @@
+﻿@model VehicleViewModel
+
+<h1>Welcome to the Car Auction Bid Calculator</h1>
+<hr />
+
+<form asp-action="CalculateBid" method="post">
+    <div class="form-group">
+        <label asp-for="BasePrice">Enter the Vehicle Base Price:</label>
+        <input asp-for="BasePrice"  class="form-control" id="BPInput" required />
+        <span asp-validation-for="BasePrice"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VehicleType">Enter the Vehicle Type (Common/Luxury):</label>
+        @Html.DropDownListFor(model => model.VehicleType, Enum.GetNames(typeof(EnumVehicleType)).Select(t => new SelectListItem { Text = t, Value = t }), new { @class = "form-control" })
+        <span asp-validation-for="VehicleType"></span>
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary">Calculate Bid</button>
+</form>
+
+
